@@ -1,0 +1,33 @@
+# Day 1 - Understanding AI Pipelines
+
+## AI Pipeline
+
+Input → Processing → Output
+
+Example:
+User Question → AI Processing → AI Answer
+
+## Real World AI Products
+
+1. ChatGPT
+Input: User question
+Processing: Language model analysis
+Output: Text response
+
+2. Google Translate
+Input: Text in source language
+Processing: Translation model
+Output: Translated text
+
+3. Spotify Recommendations
+Input: Listening history
+Processing: Recommendation algorithm
+Output: Suggested songs
+
+## How a Chatbot Works
+
+A chatbot receives a message from the user as input.
+It processes the message and tries to understand the meaning.
+The AI model analyzes patterns learned from training data.
+It generates the most suitable response based on the user's request.
+Finally, the chatbot sends the response back to the user as output.
