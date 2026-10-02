@@ -1,0 +1,190 @@
+# Vector Representation and Cosine Similarity
+
+## Overview
+
+This project demonstrates how computers compare the meaning of text using Vector Representation and Cosine Similarity.
+
+Humans can easily understand that words such as "dog" and "puppy" are related, but computers work with numbers rather than language. To enable machines to compare text, sentences are converted into numerical vectors using TF-IDF vectorization.
+
+Cosine Similarity is then used to measure how similar two pieces of text are by comparing the angle between their vectors.
+
+---
+
+## Objectives
+
+* Understand why text must be converted into numerical form
+* Create TF-IDF vector representations of sentences
+* Calculate pairwise cosine similarity scores
+* Build a semantic search function
+* Compare similar and dissimilar sentence pairs
+* Visualize similarity relationships using a heatmap
+* Learn the mathematical intuition behind cosine similarity
+
+---
+
+## Technologies Used
+
+* Python
+* NumPy
+* Scikit-learn
+* Matplotlib
+
+---
+
+## Dataset
+
+A corpus of 10 sentences covering multiple topics was created:
+
+### Animals
+
+* Dogs are loyal pets.
+* Puppies are young dogs.
+* Cats enjoy sleeping during the day.
+
+### Technology
+
+* Artificial Intelligence is changing industries.
+* Machine learning helps computers learn from data.
+* Python is a popular programming language.
+
+### Travel
+
+* Airplanes are used for long-distance travel.
+* Tourists enjoy visiting historical places.
+* Hotels provide accommodation for travelers.
+
+### Sports
+
+* Cricket is one of the most popular sports.
+
+---
+
+## Methodology
+
+### Step 1: TF-IDF Vectorization
+
+Each sentence was converted into a numerical vector using TF-IDF (Term Frequency-Inverse Document Frequency).
+
+TF-IDF assigns higher importance to meaningful words while reducing the impact of very common words.
+
+### Step 2: Cosine Similarity
+
+Cosine Similarity was calculated between all sentence pairs.
+
+Formula:
+
+```text
+Cosine Similarity = (A · B) / (||A|| × ||B||)
+```
+
+Values range from:
+
+* 1 → Highly similar
+* 0 → Unrelated
+* -1 → Completely opposite (rare in TF-IDF text vectors)
+
+### Step 3: Semantic Search
+
+A custom function was implemented:
+
+```python
+find_similar(query, corpus, top_k)
+```
+
+The function:
+
+* Converts the query into a TF-IDF vector
+* Calculates cosine similarity with all corpus sentences
+* Returns the most similar matches
+
+### Step 4: Heatmap Visualization
+
+A 10×10 similarity matrix was visualized using Matplotlib to identify clusters of related sentences.
+
+---
+
+## Sample Results
+
+### Similar Pair
+
+```text
+Dog
+Puppy
+```
+
+Similarity Score: High
+
+### Dissimilar Pair
+
+```text
+Dog
+Airplane
+```
+
+Similarity Score: Low
+
+This demonstrates that cosine similarity successfully captures semantic relationships between related concepts.
+
+---
+
+## Why Plain Text Cannot Be Compared Directly
+
+Computers process numbers, not language.
+
+Text such as:
+
+```text
+Dog
+Puppy
+```
+
+cannot be mathematically compared in raw form.
+
+By converting text into vectors, machine learning algorithms can perform similarity calculations, clustering, classification, and semantic search.
+
+---
+
+## Why Cosine Similarity Uses Angles
+
+Cosine similarity measures the angle between vectors rather than their absolute length.
+
+This is important because:
+
+* Longer sentences naturally contain more words.
+* Length alone should not determine similarity.
+* Direction represents meaning better than magnitude.
+
+Two sentences discussing the same topic will have vectors pointing in similar directions, producing a higher cosine similarity score.
+
+---
+
+## Key Learnings
+
+1. Machines require numerical representations of text.
+2. TF-IDF converts language into meaningful vectors.
+3. Cosine similarity measures semantic closeness.
+4. Similar texts produce higher similarity scores.
+5. Heatmaps help visualize relationships within datasets.
+
+---
+
+## Future Improvements
+
+* Sentence Transformers
+* BERT Embeddings
+* Semantic Search Systems
+* Retrieval-Augmented Generation (RAG)
+* Large-Scale Vector Databases
+
+---
+
+## Conclusion
+
+This project demonstrates the foundation of semantic search and information retrieval by combining TF-IDF vectorization with cosine similarity. It highlights how machines transform language into mathematical representations and compare meaning efficiently.
+
+---
+
+## Author
+
+Kashish Chhabra
+B.Tech Computer Science Engineering
