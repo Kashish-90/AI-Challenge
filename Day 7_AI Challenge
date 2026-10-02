@@ -1,0 +1,65 @@
+# Sentiment Analysis Using Machine Learning
+
+## Overview
+
+This project implements a simple Sentiment Analysis model using Python and Scikit-Learn.
+
+The goal is to classify movie reviews as Positive or Negative using a Naive Bayes classifier.
+
+## Dataset
+
+A small dataset of positive and negative movie reviews was created for training and testing.
+
+## Technologies Used
+
+* Python
+* Scikit-Learn
+* Naive Bayes
+* CountVectorizer
+
+## Workflow
+
+1. Create sentiment dataset
+2. Convert text into numerical features
+3. Split dataset into training and testing sets
+4. Train Naive Bayes classifier
+5. Evaluate using accuracy score
+6. Test on new custom reviews
+
+## Accuracy
+
+The model achieved a good accuracy score on the test dataset.
+
+## Manual Test Cases
+
+### Positive
+
+* I really loved this film
+* Amazing performance
+* Fantastic experience
+
+### Negative
+
+* This movie was horrible
+* Not good at all
+
+## Observations
+
+1. More training data improves model accuracy.
+2. Unknown words can reduce prediction quality.
+3. Balanced datasets produce better results.
+
+## Limitations
+
+* Does not understand sarcasm.
+* Struggles with mixed sentiments.
+* Small datasets limit performance.
+
+## Conclusion
+
+This project demonstrates the basic workflow of text classification and sentiment analysis using Machine Learning.
+
+## Author
+
+Kashish Chhabra
+B.Tech CSE Student
