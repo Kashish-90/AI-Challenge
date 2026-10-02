@@ -1,0 +1,89 @@
+# Semantic Search Engine in Python
+
+## Overview
+
+This project demonstrates a simple Semantic Search Engine using Python and Sentence Transformers.
+
+Unlike traditional keyword search, semantic search understands the meaning and context of a query and returns the most relevant results.
+
+## Features
+
+* Dataset of 20 technology-related sentences
+* Sentence embeddings using Sentence Transformers
+* Cosine similarity for semantic matching
+* Returns Top 3 most relevant results
+* Comparison between Semantic Search and Keyword Search
+
+## Technologies Used
+
+* Python
+* Sentence Transformers
+* Scikit-learn
+
+## How It Works
+
+1. Create a dataset of sentences.
+2. Convert all sentences into vector embeddings.
+3. Convert the user query into an embedding.
+4. Calculate cosine similarity between the query and all sentences.
+5. Return the top 3 most similar results.
+6. Compare the results with traditional keyword search.
+
+## Installation
+
+```bash
+pip install sentence-transformers scikit-learn
+```
+
+## Run the Project
+
+```bash
+python semantic_search.py
+```
+
+## Example Query
+
+```text
+How do computers learn from information?
+```
+
+## Example Output
+
+```text
+Machine learning helps computers learn from data.
+Data science combines statistics and programming.
+Deep learning uses neural networks.
+```
+
+## Semantic Search vs Keyword Search
+
+### Semantic Search
+
+* Understands meaning and context
+* Finds relevant results even with different wording
+* Used in AI assistants and RAG systems
+
+### Keyword Search
+
+* Matches exact words
+* May miss relevant results if wording differs
+
+## Real-World Applications
+
+* AI Chatbots
+* Recommendation Systems
+* Search Engines
+* Retrieval-Augmented Generation (RAG)
+* Document Search Systems
+
+## Future Improvements
+
+* Larger datasets
+* PDF and document search
+* Web-based interface
+* Vector database integration
+
+## Author
+
+Kashish Chhabra
+B.Tech CSE Student
