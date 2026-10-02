@@ -1,0 +1,96 @@
+# Teachable Machine Image Classifier
+
+## Overview
+
+This project explores the basics of Machine Learning using Google's Teachable Machine.
+
+The goal was to train a simple image classifier with two categories and understand how data quality and quantity affect model performance.
+
+## Categories Used
+
+* Class 1: Pen
+* Class 2: Mobile Phone
+
+*(Replace these with your actual categories if different.)*
+
+## Objective
+
+* Train a classifier using Teachable Machine
+* Observe model behavior with different amounts of training data
+* Test the impact of noisy and inconsistent data
+* Record observations about model learning
+
+## Tools Used
+
+* Google Teachable Machine
+* Web Browser
+* Camera / Image Samples
+
+## Training Process
+
+### Initial Training
+
+* Added a small number of images for each class.
+* Trained the model.
+* Observed moderate accuracy.
+
+### Improved Training
+
+* Added more images from different angles and lighting conditions.
+* Retrained the model.
+* Accuracy improved significantly.
+
+### Noisy Data Experiment
+
+* Added unclear and inconsistent images.
+* Retrained the model.
+* Accuracy decreased and predictions became less reliable.
+
+## Results
+
+The model successfully classified the two categories when sufficient and consistent training data was provided.
+
+The classifier performed best when:
+
+* Images were clear.
+* Training samples were balanced.
+* Different viewing angles were included.
+
+## Observations
+
+### Observation 1
+
+More training data improves model performance because the model sees more examples and learns better patterns.
+
+### Observation 2
+
+High-quality and consistent images lead to more accurate predictions than blurry or noisy images.
+
+### Observation 3
+
+Balanced datasets are important. If one class has significantly more images than another, predictions may become biased.
+
+## What I Learned
+
+* Machine learning depends heavily on data quality.
+* More data generally improves accuracy.
+* Noisy and inconsistent data can confuse a model.
+* Training a model is not only about algorithms but also about preparing good data.
+
+## Screenshots
+
+Add screenshots of:
+
+1. Dataset creation
+2. Training process
+3. Prediction results
+4. Accuracy comparison
+
+## Conclusion
+
+This project provided hands-on experience with machine learning concepts and demonstrated how data quantity, quality, and consistency directly influence model performance.
+
+## Author
+
+Kashish Chhabra
+B.Tech CSE Student
