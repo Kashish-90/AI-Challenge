@@ -1,0 +1,85 @@
+# Text Preprocessing in NLP
+
+## Overview
+
+This project demonstrates a complete Natural Language Processing (NLP) text preprocessing pipeline using Python, NLTK, and Regular Expressions (Regex).
+
+Raw text data often contains punctuation, emojis, stopwords, inconsistent capitalization, and other noise. This project cleans and transforms raw text into a structured format suitable for machine learning and NLP applications.
+
+## Objectives
+
+* Perform sentence-level tokenization
+* Perform word-level tokenization
+* Convert text to lowercase
+* Remove punctuation using Regex
+* Remove stopwords using NLTK
+* Apply stemming using PorterStemmer
+* Apply lemmatization using WordNetLemmatizer
+* Compare vocabulary size before and after preprocessing
+
+## Tools and Libraries
+
+* Python
+* NLTK
+* Regex (re module)
+
+## Dataset
+
+Three raw text samples were used:
+
+### 1. Social Media Post
+
+Contains emojis, punctuation, and informal language.
+
+### 2. News Article
+
+Contains formal language and punctuation.
+
+### 3. Customer Review
+
+Contains opinions, punctuation, and mixed sentiment.
+
+## Preprocessing Steps
+
+### 1. Sentence Tokenization
+
+Splits text into individual sentences.
+
+### 2. Word Tokenization
+
+Splits sentences into individual words or tokens.
+
+### 3. Lowercasing
+
+Converts all words to lowercase for consistency.
+
+### 4. Punctuation Removal
+
+Uses Regex to remove punctuation and special characters.
+
+### 5. Stopword Removal
+
+Removes common words such as:
+
+* the
+* is
+* and
+* a
+
+These words usually carry little semantic meaning.
+
+### 6. Stemming
+
+Reduces words to their root form.
+
+Examples:
+
+```text
+playing → play
+running → run
+studies → studi
+```
+
+### 7. Lemmatization
+
+C
