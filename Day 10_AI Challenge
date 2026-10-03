@@ -1,0 +1,313 @@
+# Modular NLP Pipeline Engineering
+
+## Overview
+
+This project demonstrates a modular Natural Language Processing (NLP) pipeline that transforms raw text into ranked similarity results. Instead of building one large script, the system is divided into independent, reusable modules that can be tested and maintained separately.
+
+The pipeline performs:
+
+1. Text Preprocessing
+2. Text Vectorization
+3. Similarity Computation
+4. Ranked Result Generation
+
+---
+
+## Objective
+
+Build a reusable NLP pipeline capable of:
+
+- Cleaning and preprocessing raw text
+- Converting text into numerical vectors
+- Calculating similarity between queries and documents
+- Returning ranked results with similarity scores
+- Handling common edge cases gracefully
+
+---
+
+## Technologies Used
+
+- Python
+- Scikit-learn
+- NLTK
+
+---
+
+## Project Structure
+
+```text
+project/
+│
+├── preprocessing_module.py
+├── vectorizer_module.py
+├── pipeline.py
+├── test_queries.py
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Modules
+
+### 1. PreprocessingModule
+
+Responsible for cleaning and normalizing text.
+
+#### Features
+
+- Lowercasing
+- Removing punctuation
+- Removing special characters
+- Tokenization
+- Stopword removal
+- Text normalization
+
+#### Method
+
+```python
+transform(text)
+```
+
+Input:
+
+```text
+"Hello!!! Welcome to NLP."
+```
+
+Output:
+
+```text
+"hello welcome nlp"
+```
+
+---
+
+### 2. VectorizerModule
+
+Converts processed text into numerical vectors using TF-IDF.
+
+#### Methods
+
+```python
+fit(corpus)
+transform(query)
+```
+
+Functions:
+
+- Learn vocabulary from corpus
+- Create TF-IDF vectors
+- Compute cosine similarity
+
+---
+
+### 3. Pipeline
+
+Connects all modules together.
+
+#### Method
+
+```python
+run(query, corpus)
+```
+
+Workflow:
+
+1. Preprocess corpus
+2. Preprocess query
+3. Vectorize text
+4. Calculate similarity
+5. Rank documents
+6. Return results
+
+---
+
+## Data Flow Architecture
+
+```text
+Raw Query
+    │
+    ▼
+Preprocessing Module
+    │
+    ▼
+Cleaned Query
+    │
+    ▼
+Vectorizer Module
+    │
+    ▼
+TF-IDF Vector
+    │
+    ▼
+Similarity Calculation
+    │
+    ▼
+Ranking Engine
+    │
+    ▼
+Final Ranked Results
+```
+
+---
+
+## Test Corpus
+
+The system was tested on a corpus containing 15 documents covering different topics such as:
+
+- Artificial Intelligence
+- Machine Learning
+- Data Science
+- Python Programming
+- NLP
+- Cybersecurity
+- Cloud Computing
+- Databases
+- Software Engineering
+- Web Development
+
+---
+
+## Sample Queries
+
+### Query 1
+
+```text
+machine learning algorithms
+```
+
+### Query 2
+
+```text
+python programming language
+```
+
+### Query 3
+
+```text
+natural language processing
+```
+
+### Query 4
+
+```text
+cybersecurity threats
+```
+
+### Query 5
+
+```text
+database management systems
+```
+## Example Output
+
+```text
+Query:
+machine learning algorithms
+
+Ranked Results:
+
+1. Document 4
+   Similarity Score: 0.87
+
+2. Document 7
+   Similarity Score: 0.74
+
+3. Document 2
+   Similarity Score: 0.53
+```
+## Edge Case Handling
+
+The pipeline includes validation for:
+
+### Empty Input
+
+Input:
+
+```text
+""
+Output:
+
+```text
+Error: Empty query provided.
+
+### Single Character Query
+
+Input:
+
+```text
+"a"
+
+Output:
+
+```text
+Warning: Query too short
+
+### Numbers or Symbols Only
+
+Input:
+
+```text
+"123456!!!"
+Output:
+
+```text
+Error: Invalid text input.
+## Performance
+
+### Naive Approach
+
+- Processes each document individually
+- Repeated preprocessing
+- Higher execution time
+
+### Modular Pipeline
+
+- Reusable components
+- Cleaner code structure
+- Easier testing and maintenance
+- Better scalability
+
+## Design Decisions
+### Why Modular Design?
+Each module follows the Single Responsibility Principle.
+Benefits:
+
+- Easier debugging
+- Better code organization
+- Independent testing
+- Reusability
+- Easy future enhancements
+
+For example:
+- Preprocessing logic can be upgraded without modifying similarity calculations.
+- Different vectorization techniques can be added without changing pipeline structure.
+
+This makes the system more maintainable than a monolithic script where all logic is mixed together.
+
+## Learning Outcomes
+
+Through this project, I learned:
+
+- NLP preprocessing techniques
+- TF-IDF vectorization
+- Cosine similarity
+- Modular software design
+- Pipeline engineering
+- Error handling
+- Code reusability principles
+
+## Future Improvements
+
+- Support for Word2Vec embeddings
+- Support for BERT embeddings
+- Interactive web interface
+- Larger document collections
+- Real-time document search
+- Hybrid semantic search
+## Author
+
+Kashish Chhabra
+
+AB Talks AI Challenge – Modular NLP Pipeline Engineering
