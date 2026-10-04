@@ -1,0 +1,25 @@
+# Mini Information Retrieval Engine
+
+## Focus Area
+Information Retrieval Modern AI systems do not generate answers from nothing — they first retrieve relevant information[span_1](start_span)[span_1](end_span). This project builds a mini retrieval engine that accepts user queries and returns the most relevant documents from a knowledge base, ranked by similarity score, with a threshold below which it honestly admits it cannot find anything useful[span_2](start_span)[span_2](end_span).
+
+## Tools
+* Python[span_3](start_span)[span_3](end_span)
+* scikit-learn[span_4](start_span)[span_4](end_span)
+* NumPy[span_5](start_span)[span_5](end_span)
+
+## What to Do / Implementation Details
+* **Knowledge Base**: Create a knowledge base of at least 20 text documents on a topic of your choice and store them as a Python list[span_6](start_span)[span_6](end_span).
+* **Vectorisation**: Preprocess and vectorise all documents using your Day 10 Pipeline class and store the resulting TF-IDF matrix[span_7](start_span)[span_7](end_span).
+* **Retrieval Function**: Build a `retrieve(query, corpus_matrix, top_k=3)` function that vectorises the query and returns the top K most relevant documents with their similarity scores[span_8](start_span)[span_8](end_span).
+* **System Testing**: Test the retrieval system with 10 different queries including at least two ambiguous queries and two completely out-of-domain queries[span_9](start_span)[span_9](end_span).
+* **Failure Analysis**: Analyse retrieval failures: for every query that returned a wrong top result, write a one-sentence diagnosis explaining the specific cause[span_10](start_span)[span_10](end_span).
+* **Relevance Threshold**: Implement a relevance threshold: if the highest similarity score across all documents is below 0.1, return a 'No relevant document found' message instead of a low-quality result[span_11](start_span)[span_11](end_span).
+* **Limitations Documentation**: Document in writing how vocabulary mismatch causes TF-IDF retrieval to fail on synonym queries and what this limitation tells you about the need for embeddings[span_12](start_span)[span_12](end_span).
+
+## Submission Deliverables
+* Document retrieval engine with the `retrieve()` function[span_13](start_span)[span_13](end_span).
+* 10-query test results showing both successes and failures[span_14](start_span)[span_14](end_span).
+* Relevance threshold implementation details[span_15](start_span)[span_15](end_span).
+* Complete failure analysis[span_16](start_span)[span_16](end_span).
+  
