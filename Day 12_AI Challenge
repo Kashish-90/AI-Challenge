@@ -1,0 +1,195 @@
+# 📚 AB Talks AI Challenge – Day 12
+
+## Topic: Context Chunking for Long Documents
+
+### Problem Statement
+
+Large documents such as research papers, manuals, and articles are often too large to fit into an LLM's context window.
+
+The objective of this challenge is to compare different chunking strategies and understand how chunk size and overlap affect retrieval quality.
+
+---
+
+## Tools Used
+
+* Python
+* LangChain
+* RecursiveCharacterTextSplitter
+
+---
+
+## Goals
+
+1. Implement fixed-size chunking manually.
+2. Implement RecursiveCharacterTextSplitter using LangChain.
+3. Test multiple chunk sizes and overlaps.
+4. Compare retrieval quality.
+5. Identify boundary failures where context is lost.
+6. Recommend the best chunking strategy.
+
+---
+
+## Fixed-Size Chunking
+
+### Method
+
+The document is split every N characters.
+
+```python
+def fixed_chunk(text, size):
+    chunks = []
+    for i in range(0, len(text), size):
+        chunks.append(text[i:i + size])
+    return chunks
+```
+
+### Advantages
+
+* Simple
+* Fast
+
+### Limitations
+
+* Can split sentences in the middle
+* May lose context
+
+---
+
+## Recursive Character Chunking
+
+LangChain's RecursiveCharacterTextSplitter attempts to split on paragraphs, line breaks, and sentences before performing hard character cuts. This helps preserve meaning better than naive fixed-size splitting.
+
+```python
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=500,
+    chunk_overlap=50
+)
+
+chunks = splitter.split_text(document)
+```
+
+---
+
+## Experiment Configurations
+
+| Chunk Size | Overlap |
+| ---------- | ------- |
+| 100        | 0       |
+| 100        | 50      |
+| 100        | 100     |
+| 300        | 0       |
+| 300        | 50      |
+| 300        | 100     |
+| 500        | 0       |
+| 500        | 50      |
+| 500        | 100     |
+| 1000       | 0       |
+| 1000       | 50      |
+| 1000       | 100     |
+
+Total Configurations Tested: **12**
+
+---
+
+## Observations
+
+### Small Chunks (100)
+
+* High precision
+* Context frequently broken
+* Many sentence boundary issues
+
+### Medium Chunks (300–500)
+
+* Good balance of context and retrieval accuracy
+* Most useful results
+
+### Large Chunks (1000)
+
+* More context retained
+* Retrieval sometimes includes irrelevant information
+
+### Effect of Overlap
+
+Overlapping chunks help preserve information that crosses chunk boundaries and reduce context loss. Configurations with overlap generally returned more complete results.
+
+---
+
+## Boundary Failure Example
+
+Without overlap:
+
+```text
+Chunk 1:
+"The model achieved state-of-the-art"
+
+Chunk 2:
+"results on benchmark datasets."
+```
+
+The sentence is split across two chunks, making retrieval less reliable.
+
+With overlap:
+
+```text
+Chunk 1:
+"The model achieved state-of-the-art"
+
+Chunk 2:
+"achieved state-of-the-art results on benchmark datasets."
+```
+
+Context is preserved.
+
+---
+
+## Best Configuration
+
+### Recommended
+
+```text
+Chunk Size = 500
+Chunk Overlap = 100
+```
+
+Reason:
+
+* Preserves context well
+* Minimizes sentence fragmentation
+* Produces high-quality retrieval results
+
+This recommendation aligns with common chunking guidance and practical experiments showing that moderate chunk sizes with overlap often provide the best balance between context retention and retrieval quality.
+
+---
+
+## Real-World Applications
+
+* Retrieval-Augmented Generation (RAG)
+* Search Engines
+* AI Assistants
+* Knowledge Bases
+* Document Question Answering
+
+---
+
+## Learning Outcomes
+
+✅ Fixed-Size Chunking
+
+✅ Recursive Chunking
+
+✅ Chunk Overlap Strategies
+
+✅ Retrieval Optimization
+
+✅ Context Preservation
+
+✅ LangChain Text Splitters
+
+---
+
+## Conclusion
+
+Chunking plays a critical role in Retrieval-Augmented Generation systems. The experiment demonstrated that chunk size and overlap significantly influence retrieval quality. Medium-sized chunks with overlap provided the best balance between context retention and search accuracy.
