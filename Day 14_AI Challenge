@@ -1,0 +1,213 @@
+# 🔍 AB Talks AI Challenge – Day 14
+
+## Topic: Semantic Search with Vector Databases
+
+### Problem Statement
+
+Traditional keyword search only finds documents containing the exact query words.
+
+Semantic search goes beyond keywords by understanding the meaning and intent behind a query. It uses embeddings and vector similarity search to retrieve relevant documents even when different words are used.
+
+In this project, we build a semantic search engine using OpenAI Embeddings and FAISS, then compare its performance with traditional keyword search.
+
+---
+
+## Tools Used
+
+* Python
+* OpenAI Embeddings API
+* FAISS
+* NumPy
+
+---
+
+## Project Objectives
+
+* Generate embeddings for a document corpus.
+* Store vectors using FAISS.
+* Perform semantic similarity search.
+* Build a keyword search baseline.
+* Compare semantic search and keyword search results.
+* Analyze strengths and weaknesses of both approaches.
+
+---
+
+## What is FAISS?
+
+FAISS (Facebook AI Similarity Search) is a library designed for efficient similarity search and clustering of dense vectors. It allows fast retrieval of the nearest vectors from large datasets.
+
+---
+
+## Workflow
+
+```text
+Documents
+    ↓
+Embeddings
+    ↓
+FAISS Index
+    ↓
+User Query
+    ↓
+Query Embedding
+    ↓
+Nearest Neighbour Search
+    ↓
+Top Relevant Results
+```
+
+---
+
+## Semantic Search Function
+
+```python
+def semantic_search(query, top_k=5):
+    query_embedding = get_embedding(query)
+
+    distances, indices = index.search(
+        query_embedding,
+        top_k
+    )
+
+    return indices, distances
+```
+
+---
+
+## Keyword Search Function
+
+```python
+def keyword_search(query, documents):
+    results = []
+
+    for doc in documents:
+        score = len(
+            set(query.lower().split())
+            &
+            set(doc.lower().split())
+        )
+
+        results.append((score, doc))
+
+    results.sort(reverse=True)
+
+    return results[:5]
+```
+
+---
+
+## Example Query
+
+### Query
+
+```text
+How can I recover my account password?
+```
+
+### Semantic Search Result
+
+```text
+Users can reset forgotten passwords through account settings.
+```
+
+### Keyword Search Result
+
+```text
+Password reset information page.
+```
+
+Semantic search understands the intent even when different wording is used.
+
+---
+
+## Comparison
+
+| Feature               | Keyword Search | Semantic Search |
+| --------------------- | -------------- | --------------- |
+| Exact Word Match      | Excellent      | Good            |
+| Meaning Understanding | Poor           | Excellent       |
+| Synonym Handling      | Poor           | Excellent       |
+| Scalability           | Good           | Excellent       |
+| Context Awareness     | Low            | High            |
+
+---
+
+## Findings
+
+### Cases Where Semantic Search Performs Better
+
+1. Synonyms are used.
+2. User intent differs from document wording.
+3. Natural language questions are asked.
+
+### Cases Where Keyword Search Performs Better
+
+1. Exact product names.
+2. Specific IDs or codes.
+3. Precise term matching.
+
+---
+
+## Trade-Offs
+
+### Semantic Search
+
+Advantages:
+
+* Understands meaning.
+* Handles paraphrasing.
+* Better user experience.
+
+Limitations:
+
+* Higher computational cost.
+* Requires embedding generation.
+* More storage for vectors.
+
+### Keyword Search
+
+Advantages:
+
+* Fast.
+* Simple implementation.
+* Works well for exact matches.
+
+Limitations:
+
+* Cannot understand intent.
+* Fails with synonyms.
+
+---
+
+## Real-World Applications
+
+* Search Engines
+* AI Assistants
+* Enterprise Knowledge Bases
+* RAG Systems
+* Customer Support Bots
+* Document Retrieval Systems
+
+---
+
+## Learning Outcomes
+
+✅ OpenAI Embeddings
+
+✅ Vector Databases
+
+✅ FAISS Indexing
+
+✅ Semantic Search
+
+✅ Similarity Search
+
+✅ Retrieval-Augmented Generation (RAG)
+
+✅ Keyword Search Comparison
+
+---
+
+## Conclusion
+
+This project demonstrated how semantic search can retrieve information based on meaning rather than exact keyword matches. By combining OpenAI Embeddings with FAISS, we built a scalable retrieval system capable of understanding user intent and providing more relevant search results than traditional keyword-based approaches. FAISS enables efficient nearest-neighbor search over embedding vectors, making it suitable for large-scale semantic retrieval systems.
