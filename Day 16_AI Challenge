@@ -1,0 +1,128 @@
+# 🔍 RAG Diagnostics and Debugging
+
+## 📌 Project Overview
+
+This project focuses on diagnosing and debugging a Retrieval-Augmented Generation (RAG) pipeline built using Python, OpenAI API, and FAISS.
+
+A RAG pipeline can sometimes retrieve incorrect information or generate answers that are not supported by the retrieved context. This project identifies common failure modes, records retrieval results, evaluates answer quality, and implements improvements to make the system more reliable.
+
+## 🎯 Objectives
+
+* Design a test suite of 15 queries.
+* Identify five common RAG failure modes.
+* Log retrieved document chunks, similarity scores, and generated answers.
+* Classify each test result and document its cause.
+* Trace failures to chunking or embedding decisions.
+* Implement at least two fixes.
+* Evaluate retrieval quality and answer quality separately.
+
+## 🛠️ Technologies Used
+
+* Python
+* OpenAI API
+* FAISS
+* JSON
+* Retrieval-Augmented Generation (RAG)
+
+## ⚠️ RAG Failure Modes
+
+The project investigates the following five failure types:
+
+1. **Retrieval Failure:** The system fails to retrieve the relevant document or information.
+2. **Context Window Overflow:** The retrieved context exceeds the available context window.
+3. **Answer-Context Mismatch:** The generated answer does not match or is not supported by the retrieved context.
+4. **Vague Context Retrieved:** The retrieved chunks contain insufficient or unclear information.
+5. **Correct Chunk but Wrong Answer:** The relevant chunk is retrieved, but the language model generates an incorrect answer.
+
+## 🔄 Project Workflow
+
+1. Prepare a set of 15 test queries.
+2. Run each query through the RAG pipeline.
+3. Retrieve relevant document chunks using FAISS.
+4. Record the retrieved content and similarity scores.
+5. Generate an answer using the retrieved context.
+6. Save the results to a local JSON file.
+7. Classify each result by its failure type.
+8. Diagnose the cause of each failure.
+9. Implement at least two improvements.
+10. Calculate average retrieval and answer quality scores.
+
+## 🧪 Testing and Evaluation
+
+Each query is evaluated on two separate dimensions:
+
+* **Retrieval Quality:** Rated from 1 to 5 based on the relevance of the retrieved documents.
+* **Answer Quality:** Rated from 1 to 5 based on the correctness and relevance of the generated answer.
+
+The average score for each dimension is calculated across all 15 queries.
+
+## 🐛 Debugging and Improvements
+
+Potential improvements include:
+
+* Adjusting chunk size and chunk overlap.
+* Refining the embedding and retrieval process.
+* Tuning the similarity threshold.
+* Reducing unnecessary retrieved context.
+* Improving the system prompt to prevent unsupported answers.
+* Adding structured logging for easier debugging.
+
+At least two fixes should be implemented and evaluated against the identified failures.
+
+## 📂 Suggested Project Structure
+
+```text
+rag-diagnostics/
+│
+├── main.py
+├── test_queries.py
+├── rag_pipeline.py
+├── results.json
+├── README.md
+└── requirements.txt
+```
+
+## 📊 Results and Reporting
+
+The final report includes:
+
+* Logged results for all 15 queries.
+* Retrieved document excerpts and similarity scores.
+* Generated answers.
+* Failure classification and one-sentence diagnoses.
+* At least two traced failure causes.
+* Two implemented fixes.
+* A retrieval-versus-answer quality scorecard with average scores.
+
+## ▶️ How to Run
+
+1. Clone or download the repository.
+2. Install the required dependencies:
+
+```bash
+pip install openai faiss-cpu
+```
+
+3. Configure your OpenAI API key using an environment variable.
+4. Run the project:
+
+```bash
+python main.py
+```
+
+5. Review `results.json` and the final analysis report.
+
+**Note:** The exact commands may vary depending on your implementation and file names.
+
+## 📚 Learning Outcomes
+
+* Understanding Retrieval-Augmented Generation.
+* Diagnosing common RAG pipeline failures.
+* Working with FAISS-based similarity search.
+* Evaluating retrieval and answer quality separately.
+* Implementing structured logging with JSON.
+* Improving the reliability of AI-generated answers.
+
+## 👩‍💻 Conclusion
+
+This project demonstrates how systematic testing, failure classification, logging, and targeted improvements can help identify weaknesses in a RAG pipeline. The goal is to make retrieval more relevant and generated answers more accurate and trustworthy.
