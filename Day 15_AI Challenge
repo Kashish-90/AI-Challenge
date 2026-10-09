@@ -1,0 +1,159 @@
+# 🤖 Build Your First RAG Pipeline
+
+## 📌 Project Overview
+
+This project demonstrates how to build a Retrieval-Augmented Generation (RAG) pipeline using Python, LangChain, OpenAI API, and FAISS.
+
+Large Language Models (LLMs) can sometimes generate incorrect information, also known as hallucinations. RAG helps reduce this problem by retrieving relevant information from a knowledge base and providing it to the language model as context before generating an answer.
+
+This project compares answers generated with RAG against answers generated without RAG to understand how retrieval improves answer grounding.
+
+## 🎯 Objectives
+
+* Connect a FAISS-based semantic search engine to an OpenAI language model.
+* Retrieve the top three relevant document chunks for a query.
+* Build a `generate_with_rag(query)` function.
+* Build a `generate_without_rag(query)` function.
+* Test five queries using a custom knowledge base.
+* Compare grounded and ungrounded answers.
+* Investigate two cases where RAG still produces incorrect answers.
+* Create a RAG system architecture diagram.
+
+## 🛠️ Technologies Used
+
+* Python
+* LangChain
+* OpenAI API
+* FAISS
+* Semantic Search
+* Retrieval-Augmented Generation (RAG)
+
+## 🔄 How RAG Works
+
+1. **User Query:** The user submits a question.
+2. **Query Embedding:** The question is converted into a vector representation.
+3. **Semantic Search:** FAISS searches the knowledge base for relevant document chunks.
+4. **Top-3 Retrieval:** The three most relevant chunks are selected.
+5. **Prompt Construction:** The retrieved context and question are combined in a structured prompt.
+6. **LLM Generation:** The language model generates an answer using the supplied context.
+7. **Final Response:** The generated answer is returned to the user.
+
+## ⚙️ Project Functions
+
+### 1. `generate_with_rag(query)`
+
+* Retrieves the top three relevant chunks from FAISS.
+* Adds the retrieved context to a structured prompt.
+* Sends the prompt to the OpenAI API.
+* Returns an answer grounded in the retrieved information.
+
+### 2. `generate_without_rag(query)`
+
+* Sends the question directly to the language model.
+* Does not retrieve any documents.
+* Provides a baseline for comparison with the RAG-enabled response.
+
+## 🧪 Testing and Evaluation
+
+The project uses five test queries based on information that is not part of the language model's general training knowledge, such as facts from a custom company knowledge base or a fictional scenario.
+
+Each query is tested using both functions.
+
+The results are compared to evaluate:
+
+* Answer correctness
+* Relevance to the knowledge base
+* Grounding in retrieved context
+* Differences between RAG and non-RAG responses
+
+## 🐛 Failure Analysis
+
+RAG does not guarantee completely correct answers. Two failure cases are investigated:
+
+1. **Retrieval Failure:** The system retrieves an irrelevant or incorrect document chunk.
+2. **Generation Failure:** The correct information is retrieved, but the language model generates an incorrect answer or introduces unsupported details.
+
+Tracing these failures helps identify whether the problem occurs during retrieval or answer generation.
+
+## 🏗️ System Architecture
+
+```text
+User Query
+    |
+    v
+Query Processing
+    |
+    v
+Query Embedding
+    |
+    v
+FAISS Semantic Search
+    |
+    v
+Retrieve Top 3 Chunks
+    |
+    v
+Build Structured Prompt
+    |
+    v
+OpenAI Language Model
+    |
+    v
+Grounded Answer
+    |
+    v
+Final Response
+```
+
+## 📂 Suggested Project Structure
+
+```text
+rag-pipeline/
+│
+├── main.py
+├── knowledge_base.py
+├── rag_pipeline.py
+├── architecture.png
+├── README.md
+└── requirements.txt
+```
+
+## ▶️ Installation and Execution
+
+### Install dependencies
+
+```bash
+pip install openai langchain langchain-openai faiss-cpu
+```
+
+Install any additional packages required by your implementation.
+
+### Configure the API key
+
+Set your OpenAI API key as an environment variable. Do not hardcode or upload API keys to GitHub.
+
+### Run the project
+
+```bash
+python main.py
+```
+
+The program should print the RAG and non-RAG answers side by side for all five test queries.
+
+## 📚 Learning Outcomes
+
+* Understanding Retrieval-Augmented Generation.
+* Implementing semantic search with FAISS.
+* Connecting a vector search engine to an LLM.
+* Using retrieved context to ground AI-generated answers.
+* Comparing RAG and non-RAG responses.
+* Identifying retrieval and generation failures.
+* Understanding the limitations of LLM hallucination reduction.
+
+## ✅ Conclusion
+
+This project demonstrates how a RAG pipeline combines semantic search with language generation to provide answers based on a custom knowledge base.
+
+By comparing responses with and without retrieval, the project explores how relevant context can improve answer grounding while highlighting the importance of retrieval quality and careful prompt design.
+
+RAG can reduce hallucinations, but it does not eliminate them entirely.
