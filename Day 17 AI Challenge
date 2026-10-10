@@ -1,0 +1,85 @@
+# Advanced Retrieval with Metadata Filtering
+
+## Project Overview
+
+This project upgrades a Retrieval-Augmented Generation (RAG) pipeline by introducing metadata-based filtering alongside vector similarity search. It helps retrieve documents that are relevant to a query and satisfy specific constraints.
+
+## Objectives
+
+* Add metadata to knowledge base documents.
+* Store document embeddings using LangChain and FAISS.
+* Implement a `filtered_retrieve(query, filters)` function.
+* Support category, source, document type, and date filtering.
+* Compare retrieval results for five queries with and without filters.
+* Evaluate retrieval precision and document architecture changes.
+
+## Technologies Used
+
+* Python
+* LangChain
+* FAISS
+* OpenAI Embeddings
+* python-dotenv
+
+## Metadata Fields
+
+Each document contains:
+
+* `source`: Origin of the document
+* `category`: Document category
+* `date`: Publication date in YYYY-MM-DD format
+* `document_type`: Type of document
+
+## How It Works
+
+1. Documents are prepared with their metadata.
+2. OpenAI generates embeddings for the document text.
+3. FAISS indexes the embeddings for similarity search.
+4. The retrieval function searches for semantically similar documents.
+5. Metadata filters remove documents that do not meet the specified constraints.
+6. The remaining documents are returned and compared using a precision metric.
+
+## Supported Filters
+
+* Category filter
+* Source filter
+* Document type filter
+* Cutoff date filter, which excludes documents older than the specified date
+
+## Evaluation
+
+Five sample queries are tested with and without metadata filters. Precision is calculated using manually defined expected relevant sources.
+
+The actual precision scores depend on the embedding model, query, filters, and sample documents. Filtering may improve relevance for some queries but can also remove useful documents when the constraints are too restrictive.
+
+## Architecture
+
+Knowledge Base → Embeddings → FAISS Vector Store → Similarity Search → Metadata Filtering → Top-K Results
+
+## Limitations
+
+* The sample knowledge base is small and may not represent real-world performance.
+* Metadata must be accurate and consistently formatted.
+* Documents with missing or invalid dates are excluded when a cutoff date is applied.
+* Incorrect or conflicting category labels may exclude relevant documents.
+* Post-search filtering can be inefficient for large datasets.
+* An OpenAI API key and potentially paid API usage are required.
+
+## How to Run
+
+1. Install the dependencies from `requirements.txt`.
+2. Add your OpenAI API key to a local `.env` file.
+3. Run `python metadata_rag.py`.
+4. Review the five-query comparison and precision results.
+
+## Learning Outcomes
+
+* Understanding metadata-aware retrieval.
+* Using embeddings and FAISS for semantic search.
+* Applying multiple retrieval constraints.
+* Evaluating retrieval quality.
+* Documenting a RAG pipeline and its limitations.
+
+## Author
+
+Kashish Chhabra
