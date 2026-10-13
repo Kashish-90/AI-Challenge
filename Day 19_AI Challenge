@@ -1,0 +1,198 @@
+# Systematic Prompt Engineering
+
+## 📌 Project Overview
+
+This project explores how different prompt engineering techniques affect the accuracy, consistency, and reliability of Large Language Model (LLM) responses.
+
+The experiment evaluates five prompt engineering techniques on the same set of 10 inputs, compares their performance against a baseline prompt, and applies the best-performing approach to a Retrieval-Augmented Generation (RAG) assistant.
+
+## 🎯 Objectives
+
+* Define a specific task and create a baseline prompt.
+* Evaluate responses using accuracy and format consistency scores.
+* Test five prompt engineering techniques.
+* Compare average evaluation scores across prompt versions.
+* Identify the technique that produces the greatest improvement.
+* Design a grounding prompt for a RAG assistant.
+* Test the grounding prompt against out-of-context questions.
+
+## 🛠️ Technologies Used
+
+* Python
+* OpenAI API
+* Prompt Engineering
+* Large Language Models (LLMs)
+* Retrieval-Augmented Generation (RAG)
+
+## 🧪 Experiment Methodology
+
+### Step 1: Define the Task
+
+The selected task is **document question answering**. The model receives a short passage and answers a question using the supplied information.
+
+### Step 2: Create a Baseline Prompt
+
+The baseline prompt asks the model to answer the question without detailed role instructions, examples, or strict output requirements.
+
+### Step 3: Evaluate the Baseline
+
+Test the baseline prompt using 10 diverse inputs.
+
+Score every response on two criteria:
+
+* **Accuracy:** Score from 1 to 5 based on factual correctness.
+* **Format consistency:** Score from 1 to 5 based on compliance with the requested format.
+
+Calculate the average scores to establish a baseline for comparison.
+
+### Step 4: Apply Five Prompt Engineering Techniques
+
+**1. Role Assignment**
+
+Give the model a specific role, such as a document analysis assistant, to establish its task and perspective.
+
+**2. Output Format Specification**
+
+Define the required output structure, such as concise bullet points or JSON.
+
+**3. Chain-of-Thought Guidance**
+
+Provide a structured reasoning procedure for the task, while requesting only the required final answer in the output.
+
+**4. Few-Shot Examples**
+
+Include a small number of examples demonstrating the expected input and output format.
+
+**5. Negative Constraints**
+
+Explicitly state what the model must avoid, such as inventing facts or including information not present in the passage.
+
+Evaluate each technique separately using the same 10 inputs.
+
+### Step 5: Store Evaluation Results
+
+Use a Python dictionary to record each prompt version, its average evaluation score, and a brief explanation of the changes made.
+
+Example structure:
+
+```python
+prompt_versions = {
+    "baseline": {
+        "average_accuracy": None,
+        "average_format_consistency": None,
+        "description": "Original prompt without additional techniques"
+    },
+    "role_assignment": {
+        "average_accuracy": None,
+        "average_format_consistency": None,
+        "description": "Added a specific assistant role"
+    },
+    "output_format": {
+        "average_accuracy": None,
+        "average_format_consistency": None,
+        "description": "Specified the required response structure"
+    },
+    "few_shot": {
+        "average_accuracy": None,
+        "average_format_consistency": None,
+        "description": "Added examples of expected responses"
+    },
+    "negative_constraints": {
+        "average_accuracy": None,
+        "average_format_consistency": None,
+        "description": "Added explicit restrictions"
+    }
+}
+```
+
+The dictionary can be expanded to include chain-of-thought guidance and combined techniques. Fill in the scores only after conducting the experiment.
+
+## 📊 Evaluation Metrics
+
+Average Accuracy:
+
+`Sum of accuracy scores / Number of responses`
+
+Average Format Consistency:
+
+`Sum of format consistency scores / Number of responses`
+
+Compare the results of each prompt version against the baseline to identify improvements and regressions.
+
+## 🔒 RAG Grounding System Prompt
+
+The following system prompt instructs the assistant to answer only from the supplied context.
+
+```text
+You are a reliable document question-answering assistant.
+
+Rules:
+1. Answer using only the information in the provided context.
+2. Do not use outside knowledge to fill gaps in the context.
+3. If the context does not directly support the answer,
+   respond with: "I cannot answer this from the provided context."
+4. Do not invent facts, names, dates, statistics, or citations.
+5. Keep answers clear, concise, and relevant.
+6. When possible, identify the source passage supporting
+   your answer.
+7. If the context is contradictory or insufficient, state
+   that limitation instead of guessing.
+```
+
+## 🧪 Out-of-Context Testing
+
+Test the grounding prompt against five questions whose answers are absent from the supplied context.
+
+For each question, record:
+
+* The question asked.
+* The model's response.
+* Whether the model correctly refused to answer.
+* Whether it introduced unsupported information.
+
+A refusal is considered correct when the provided context does not support an answer and the model clearly acknowledges that limitation.
+
+## 📈 Expected Outcomes
+
+* A baseline evaluation across 10 inputs.
+* Five individually tested prompt engineering techniques.
+* A comparison of average accuracy and format consistency.
+* Identification of the most effective technique for the selected task.
+* A grounding system prompt for the RAG assistant.
+* Evaluation results for five out-of-context questions.
+
+Actual scores and the best-performing technique must be determined from experimental results rather than assumed in advance.
+
+## 🌍 Real-World Applications
+
+* Improving AI chatbot reliability.
+* Building document question-answering systems.
+* Reducing unsupported claims in RAG applications.
+* Standardizing AI-generated reports.
+* Improving structured data extraction.
+* Developing safer and more reliable AI assistants.
+
+## 📚 Key Learnings
+
+* Designing clear and effective prompts.
+* Comparing prompt variations systematically.
+* Measuring accuracy and response consistency.
+* Applying few-shot examples and negative constraints.
+* Grounding LLM responses in retrieved documents.
+* Evaluating a model's ability to handle unknown information.
+
+## 🚀 Future Improvements
+
+* Expand the evaluation dataset.
+* Automate scoring where appropriate and validate it with human reviewers.
+* Test different models and prompt combinations.
+* Measure refusal accuracy and hallucination rates.
+* Integrate the best-performing prompt into the existing RAG pipeline.
+
+## ✅ Conclusion
+
+This project demonstrates a systematic approach to prompt engineering by comparing different techniques on a common evaluation dataset. It also explores grounding instructions that help a RAG assistant avoid unsupported answers.
+
+The results can help identify prompt designs that improve factual accuracy, output consistency, and reliability.
+
+#Python #PromptEngineering #ArtificialIntelligence #LLM #RAG #OpenAI #AIProjects
