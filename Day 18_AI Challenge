@@ -1,0 +1,152 @@
+# LLM Hallucination Measurement Experiment
+
+## 📌 Project Overview
+
+This project measures how frequently a Large Language Model (LLM) generates incorrect, fabricated, or unsupported information.
+
+The experiment compares two conditions:
+
+1. **Without RAG:** The model answers factual questions without additional context or retrieved documents.
+2. **With RAG:** The model answers the same questions using a Retrieval-Augmented Generation (RAG) pipeline.
+
+The goal is to understand whether providing relevant context reduces hallucinations and improves factual accuracy.
+
+## 🎯 Objectives
+
+* Create a dataset of 20 factual questions across at least three knowledge domains.
+* Evaluate GPT-4o-mini responses against verified ground-truth answers.
+* Classify responses as correct, partially correct, or hallucinated.
+* Compare hallucination rates with and without RAG.
+* Build a multi-signal hallucination detector in Python.
+* Calculate a confidence score for each response.
+
+## 🛠️ Technologies Used
+
+* Python
+* OpenAI API
+* Retrieval-Augmented Generation (RAG)
+* Jaccard similarity
+* JSON for structured results
+
+## 🧪 Experiment Methodology
+
+### Step 1: Create a Question Dataset
+
+Prepare 20 factual questions covering different domains, such as:
+
+* Science
+* History
+* Geography
+* Computer Science
+
+Record the verified answer to each question as the ground truth.
+
+### Step 2: Test Without RAG
+
+Send each question to GPT-4o-mini without additional context or retrieved documents.
+
+Store the question, model response, ground-truth answer, and evaluation result in a structured format.
+
+### Step 3: Test With RAG
+
+Run the same 20 questions through the RAG pipeline developed earlier in Day 15.
+
+Retrieve relevant documents and provide their content to the model before generating its answer.
+
+Record the responses in the same structured format.
+
+### Step 4: Evaluate Responses
+
+Classify each response using predefined criteria:
+
+* **Correct:** The answer is factually accurate and addresses the question.
+* **Partially correct:** The answer contains correct information but also has important omissions or inaccuracies.
+* **Hallucinated:** The answer contains a material falsehood, fabricated fact, or unsupported assertion presented as factual.
+
+Unsupported claims should be evaluated against the retrieved context and reliable ground truth rather than automatically assumed to be false.
+
+## 📊 Hallucination Rate
+
+The hallucination rate is calculated as:
+
+Hallucination Rate = (Number of Hallucinated Responses / Total Responses) × 100
+
+Calculate the rate separately for both experimental conditions.
+
+Compare the results to determine whether RAG reduces the observed hallucination rate.
+
+## 🔍 Multi-Signal Hallucination Detector
+
+The detector uses four independent checks.
+
+### 1. Unsupported Claim Detection
+
+Identify specific numerical claims, named entities, and dates in the response that cannot be supported by the retrieved context.
+
+### 2. Retrieval Overlap Check
+
+Calculate Jaccard similarity between the response tokens and retrieved-context tokens.
+
+Jaccard Similarity = Size of Intersection / Size of Union
+
+Flag responses with a similarity score below `0.15` for further review. Low overlap is a warning signal, not proof of hallucination.
+
+### 3. Contradiction Detection
+
+Use a secondary LLM call to check whether the response contradicts the supplied context.
+
+Flag contradictory responses for review.
+
+### 4. Citation Absence Check
+
+Flag verifiable factual assertions that lack references to supporting source documents or passages.
+
+## 🧮 Confidence Scoring
+
+Combine the four detector signals into a final confidence score and print a breakdown for each response.
+
+The scoring weights and thresholds should be defined before evaluating the results. The score should be treated as a heuristic until validated against manually labelled examples.
+
+## 📈 Expected Results
+
+The experiment will produce:
+
+* A dataset of 20 factual questions.
+* Responses from both experimental conditions.
+* Manual evaluation labels.
+* Hallucination rates for both conditions.
+* A multi-signal detector with per-response breakdowns.
+* A comparison of how retrieved context affects factual reliability.
+
+No specific reduction in hallucinations is assumed before the experiment is conducted.
+
+## 🌍 Real-World Applications
+
+* Improving the reliability of AI chatbots.
+* Evaluating question-answering systems.
+* Building more trustworthy RAG applications.
+* Monitoring factual errors in AI-generated content.
+* Supporting evidence-based AI responses.
+
+## 📚 Key Learnings
+
+* Understanding LLM hallucinations.
+* Comparing language model responses with ground truth.
+* Implementing retrieval-based evaluation.
+* Measuring text similarity with Jaccard similarity.
+* Detecting unsupported claims and contradictions.
+* Evaluating AI reliability through structured experiments.
+
+## ✅ Conclusion
+
+This project provides a systematic approach to measuring LLM hallucinations and evaluating the effect of Retrieval-Augmented Generation. By combining manual evaluation with multiple automated signals, it helps identify potentially unreliable AI responses and highlights areas for improvement.
+
+## 🚀 Future Improvements
+
+* Increase the size and diversity of the question dataset.
+* Evaluate additional language models.
+* Improve claim-level factual verification.
+* Calibrate detector scores using manually labelled data.
+* Track precision, recall, and false-positive rates.
+
+#Python #ArtificialIntelligence #LLM #RAG #HallucinationDetection #OpenAI #AIProjects
